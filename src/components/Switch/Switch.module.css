@@ -1,0 +1,88 @@
+.switchContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-family: inherit;
+}
+
+.screenReaderInput {
+  position: absolute;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--switch-bg-off, #ccc);
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
+}
+
+.thumb {
+  position: absolute;
+  background-color: var(--switch-thumb-color, #ffffff);
+  border-radius: 100px;
+  top: 3px; bottom: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  --thumb-scale: 1;
+  transform: scale(var(--thumb-scale));
+  transition: left 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+              right 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Press & Hover Effects --- */
+.switchContainer:active .thumb {
+  --thumb-scale: 0.84;
+}
+
+/* --- Native State Anchors --- */
+.screenReaderInput:not(:checked) + .track .thumb {
+  left: 3px;
+  right: var(--thumb-off-right);
+}
+
+.screenReaderInput:checked + .track {
+  background-color: var(--switch-bg-on, #007bff);
+}
+
+.screenReaderInput:checked + .track .thumb {
+  left: var(--thumb-on-left);
+  right: 3px;
+}
+
+/* --- Liquid Elastic Stretch --- */
+.switchContainer:not(:active) .screenReaderInput:checked + .track .thumb {
+  transition: left 0.42s cubic-bezier(0.16, 1, 0.3, 1), right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.switchContainer:not(:active) .screenReaderInput:not(:checked) + .track .thumb {
+  transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1), right 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Sizes --- */
+.small .track { width: 34px; height: 18px; }
+.small .thumb { --thumb-off-right: 19px; --thumb-on-left: 19px; }
+
+.medium .track { width: 44px; height: 24px; }
+.medium .thumb { --thumb-off-right: 23px; --thumb-on-left: 23px; }
+
+.large .track { width: 56px; height: 30px; }
+.large .thumb { --thumb-off-right: 29px; --thumb-on-left: 29px; }
+
+/* --- Accessibility Rings --- */
+.screenReaderInput:focus-visible + .track {
+  outline: 2px solid var(--switch-focus-outline, #0056b3);
+  outline-offset: 2px;
+}
+
+/* --- Disabled State --- */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

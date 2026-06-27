@@ -103,9 +103,9 @@ export default App;
 Here are some screenshots of this project:
 
 **Components**<br/>
-![Components](screenshots/components.png)<br/>
+![Components](./screenshots/components.png)<br/>
 **Icons**<br/>
-![Icons](screenshots/icons.png)<br/>
+![Icons](./screenshots/icons.png)<br/>
 
 
 ## 🤝 Contributing

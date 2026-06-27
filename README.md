@@ -102,10 +102,11 @@ export default App;
 
 Here are some screenshots of this project:
 
-**Components**<br/>
-![Components](screenshots/components.png)<br/>
-**Icons**<br/>
-![Icons](screenshots/icons.png)<br/>
+**Components**<br/> 
+<img src="screenshots/components.png" alt="Components" width="100%" /><br/> 
+
+**Icons**<br/> 
+<img src="screenshots/icons.png" alt="Icons" width="100%" /><br/>
 
 
 ## 🤝 Contributing
